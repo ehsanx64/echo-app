@@ -68,6 +68,8 @@ func Test_main(t *testing.T) {
 	addUrl("/welcome", "Welcome User!!!\n")
 	addUrl("/welcome/em", "Welcome EM!!!\n")
 	addUrl("/welcome/adam", "Welcome Adam!!!\n")
+	addUrl("/users/show?team=alpha&member=subzero", fmt.Sprintf("team: %s, member: %s\n", "alpha", "subzero"))
+	addUrl("/users/show?team=alpha&member=", fmt.Sprintf("team: %s, member: %s\n", "alpha", ""))
 
 	for k, v := range urls {
 		fmt.Println("<=", k)
