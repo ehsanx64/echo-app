@@ -8,7 +8,7 @@ import (
 
 func AddRoutes(e *echo.Echo) {
 	e.GET("/users", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello!!!")
+		return c.String(http.StatusOK, "Hello!!!\n")
 	})
 
 	e.GET("/users/:id", func(c echo.Context) error {
