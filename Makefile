@@ -20,9 +20,11 @@ curl-general:
 	curl $(ADDR)/welcome/adam
 
 curl-user:
-	@echo "\n# /users"
+	@echo -n "\n# /users\n=> "
 	curl $(ADDR)/users
 
-	@echo "\n# /users/1"
+	@echo -n "\n# /users/1\n=> "
 	curl $(ADDR)/users/1
 
+	@echo -n "\n# /users/show?team=alpha&member=subzero\n=> "
+	curl "$(ADDR)/users/show?team=alpha&member=subzero"
