@@ -22,4 +22,10 @@ func AddRoutes(e *echo.Echo) {
 		member := c.QueryParam("member")
 		return c.String(http.StatusOK, fmt.Sprintf("team: %s, member: %s\n", team, member))
 	})
+
+	e.POST("/users/save", func(c echo.Context) error {
+		name := c.FormValue("name")
+		email := c.FormValue("email")
+		return c.String(http.StatusOK, fmt.Sprintf("name: %s, email: %s\n", name, email))
+	})
 }

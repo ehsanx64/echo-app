@@ -28,3 +28,6 @@ curl-user:
 
 	@echo -n "\n# /users/show?team=alpha&member=subzero\n=> "
 	curl "$(ADDR)/users/show?team=alpha&member=subzero"
+
+	@echo -n "\n# /users/save (name: 'Adam Smith', email: 'adam@earth.org')\n=> "
+	curl -X POST -d "name=Adam Smith" -d "email=adam@earth.org" "$(ADDR)/users/save"
