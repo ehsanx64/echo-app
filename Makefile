@@ -6,6 +6,12 @@ air:
 run:
 	go run .
 
+build-docker:
+	docker build --tag echoapp:latest .
+
+build-docker-multistage:
+	docker build -t echoapp:multistage -f Dockerfile.multistage .
+
 curl-general:
 	@echo "\n# /"
 	curl $(ADDR)
