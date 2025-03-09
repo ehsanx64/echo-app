@@ -2,7 +2,11 @@
 
 Web Application based on Echo
 
+## Features
+- Uses echo as web application framework
+- Uses sqlc\postgresql for data storage and operations
+  
 ## Tasks
-### TODO
-- [ ] Clean the codebase structure (semi-DDD)
 ### Done
+### TODO
+- [ ] TODO

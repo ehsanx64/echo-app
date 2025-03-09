@@ -5,6 +5,9 @@ air:
 
 run:
 	go run .
+	
+tidy:
+	go mod tidy -v
 
 build-docker:
 	docker build --tag echoapp:latest .
