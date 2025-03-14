@@ -1,4 +1,4 @@
 CREATE TABLE posts (
-  id   BIGINT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  title text    NOT NULL
+  id   BIGSERIAL PRIMARY KEY,
+  title text      NOT NULL
 );

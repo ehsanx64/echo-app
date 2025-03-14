@@ -7,19 +7,20 @@ package repository
 
 import (
 	"context"
-	"database/sql"
+
+	"github.com/jackc/pgx/v5/pgconn"
 )
 
 const create = `-- name: Create :execresult
 INSERT INTO users (
   name
 ) VALUES (
-  ?
+  $1
 )
 `
 
-func (q *Queries) Create(ctx context.Context, name string) (sql.Result, error) {
-	return q.db.ExecContext(ctx, create, name)
+func (q *Queries) Create(ctx context.Context, name string) (pgconn.CommandTag, error) {
+	return q.db.Exec(ctx, create, name)
 }
 
 const fetch = `-- name: Fetch :many
@@ -28,7 +29,7 @@ ORDER BY name
 `
 
 func (q *Queries) Fetch(ctx context.Context) ([]User, error) {
-	rows, err := q.db.QueryContext(ctx, fetch)
+	rows, err := q.db.Query(ctx, fetch)
 	if err != nil {
 		return nil, err
 	}
@@ -41,9 +42,6 @@ func (q *Queries) Fetch(ctx context.Context) ([]User, error) {
 		}
 		items = append(items, i)
 	}
-	if err := rows.Close(); err != nil {
-		return nil, err
-	}
 	if err := rows.Err(); err != nil {
 		return nil, err
 	}
@@ -52,11 +50,11 @@ func (q *Queries) Fetch(ctx context.Context) ([]User, error) {
 
 const get = `-- name: Get :one
 SELECT id, name FROM users
-WHERE id = ? LIMIT 1
+WHERE id = $1 LIMIT 1
 `
 
 func (q *Queries) Get(ctx context.Context, id int64) (User, error) {
-	row := q.db.QueryRowContext(ctx, get, id)
+	row := q.db.QueryRow(ctx, get, id)
 	var i User
 	err := row.Scan(&i.ID, &i.Name)
 	return i, err

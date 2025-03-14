@@ -3,6 +3,10 @@ ADDR=localhost:1323
 dev:
 	air
 
+deps:
+	go get github.com/labstack/echo/v4
+	go get github.com/jackc/pgx/v5
+	
 run:
 	go run cmd/echoapp/main.go
 	
