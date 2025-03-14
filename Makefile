@@ -4,7 +4,7 @@ dev:
 	air
 
 run:
-	go run .
+	go run cmd/echoapp/main.go
 	
 tidy:
 	go mod tidy -v
