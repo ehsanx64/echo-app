@@ -1,6 +1,6 @@
 ADDR=localhost:1323
 
-air:
+dev:
 	air
 
 run:
