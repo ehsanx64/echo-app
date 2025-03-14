@@ -40,3 +40,10 @@ curl-user:
 
 	@echo -n "\n# /users/save (name: 'Adam Smith', email: 'adam@earth.org')\n=> "
 	curl -X POST -d "name=Adam Smith" -d "email=adam@earth.org" "$(ADDR)/users/save"
+
+sqlc-clean:
+	find . -regex .*repository.*go | xargs -n 1 rm
+
+sqlc-gen:
+	cd internal/user/repository && sqlc generate
+	cd internal/blog/repository && sqlc generate
